@@ -44,20 +44,45 @@ def title_decorator(print_name_function):
               
 def print_my_name():
     print("Adam")
+
+def print_rooks_name():
+    print("Rook")
               
               
-decorated_function = title_decorator(print_my_name) 
+decorated_function = title_decorator(print_rooks_name) 
               
 decorated_function()
               
+# 5. Decorators
               
+def title_decorator(print_name_function):
+    def wrapper():
+        print("Professor:")
+        print_name_function()
+    return wrapper
               
+@title_decorator               
+def print_my_name():
+    print("Adam")
               
+@title_decorator
+def print_rooks_name():
+    print("Rook")
+        
+print_my_name()
+print_rooks_name()             
               
+#  6. Decorators with Parameters
               
+def title_decorator(print_name_function):
+    def wrapper(*args, **kwargs):
+        print("Professor:")
+        print_name_function(*args, **kwargs)
+    return wrapper
               
-              
-              
-              
-              
-              
+@title_decorator               
+def print_my_name(name, age):
+    print(name + " your are" + str(age))
+                    
+print_my_name("Dekker")
+           
